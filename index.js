@@ -144,5 +144,48 @@ increase(obj);
 console.log(obj);
 // 11
 
+// ===== ADDING OR REMOVING PROPERTIES (Members) ===== //
+// Objects in JS are dynamic
+// After you create an object, you can add or delete properties from said object
+// This is useful information because:
+// Imagine you are working with a "user" object 
+// And the client (mobile app or web app) will send "user" object to the server
+// On the server, we get this "user" object and then we add additional stuff to it
+// We can always add something extra to an existing object
+// Because we do not have classes, we don't need to define these properties which are being added on the fly ahead of time (in comparison to C# or Java where you would have to go back and change classes)
+// We can add them whenever we need them - THIS makes JavaScript extremely powerful and easy to work with
+
+
+function Circle2(radius) {
+  this.radius = radius;
+  this.draw = function() {
+    console.log(`Drawing in the second CONSTRUCTOR function example`);
+  }
+}
+
+const circle = new Circle2(10);
+
+// Adding new property to circle object with "dot notation"
+circle.location = { x: 1 };
+// Adding new property to circle object with "bracket notation"
+circle['location'] = { X: 1 };
+// "bracket notation" is useful when you want to dynamically access a property name
+const propertyName = 'location';
+circle[propertyName] = { x: 1 };
+// or when you have special characters in your property name (ie hypen or spaces)
+const propertyName1 = 'center-location';
+circle[propertyName1] = { x: 1 };
+
+
+// DELETING Properties from an existing object
+// Use case: 
+// When you get a "user" object from a db and want to return it to the client
+// But maybe that "user" object has certain properties you don't want to send to the client 
+// For example, password, credit card info, etc.
+// In that case you will dynamically delete one or more properties from that object 
+// Use "delete" operator 
+
+delete circle.location;
+
 
 
