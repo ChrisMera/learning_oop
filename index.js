@@ -188,4 +188,28 @@ circle[propertyName1] = { x: 1 };
 delete circle.location;
 
 
+// ===== ENUMERATING (Iterating) PROPERTIES ===== //
+// Sometimes you need to "iterate" over, or "enumerate" the properies in an object
+
+// 1. Use "for in" loop
+// Returns both properties and methods
+for (let key in circle) {
+  // If you want to only get the properties and not the methods, use the typeof operator
+  if (typeof circle[key] !== 'function')
+    // To return the value of these properties, use the bracket notation
+    console.log(key, circle[key]);
+}
+
+// 2. Approach to get all of the keys in an object with the "keys" method
+// Returns an array with all of the object keys
+// Does not seperate properties and methods
+const keys = Object.keys(circle);
+console.log(keys);
+
+// 3. To see if an object has a given property or method (if it exists in the object)
+// Use the "in" operator
+if ('radius' in circle) {
+  console.log(`Circle has a radius.`);
+}
+
 
