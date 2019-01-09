@@ -156,14 +156,14 @@ console.log(obj);
 // We can add them whenever we need them - THIS makes JavaScript extremely powerful and easy to work with
 
 
-function Circle2(radius) {
+function Circle1(radius) {
   this.radius = radius;
   this.draw = function() {
     console.log(`Drawing in the second CONSTRUCTOR function example`);
   }
 }
 
-const circle = new Circle2(10);
+const circle = new Circle1(10);
 
 // Adding new property to circle object with "dot notation"
 circle.location = { x: 1 };
@@ -212,4 +212,24 @@ if ('radius' in circle) {
   console.log(`Circle has a radius.`);
 }
 
+// ===== ABSTRACTION ===== //
+// === HIDE the DETAILS and COMPLEXITY === //
+// === SHOW or EXPOSE the ESSENTIALS === //
 
+function Circle2(radius) {
+  // Expose this essential property
+  this.radius = radius;
+  // Hide this property from the "consumers" of this object (implementaion detail, part of complexity of this object)
+  this.defaultLocation = { x: 0, y: 0 };
+  // Hide this method from the "consumers" of this object (implementation detail, part of complexity of this object)
+  this.computeOptimumLocation = function() {
+    // ...
+  }
+  // Expose this essential method
+  this.draw = function() {
+    this.computeOptimumLocation();
+    console.log(`Drawing in ABSTRACTION example`);
+  }
+}
+
+const circle1 = new Circle2(20);
